@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Jan 24 15:15:16 2017 arnaud.alies
+** Last update Tue Jan 24 15:17:10 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -19,12 +19,13 @@ void		*malloc(size_t size)
   t_alloc	*alloc;
 
   alloc = sbrk(size + sizeof(t_alloc));
+  //TODO : if alloc -1
   if (start == NULL)
     start = alloc;
   alloc->magic = MAGIC;
   alloc->size = size;
   alloc->used = 1;
-
+  alloc->next = NULL;
   if (prev != NULL)
     {
       prev->next = alloc;
