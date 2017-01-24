@@ -5,15 +5,11 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 16:54:55 2017 arnaud.alies
-** Last update Tue Jan 24 17:01:13 2017 arnaud.alies
+** Last update Tue Jan 24 17:13:13 2017 arnaud.alies
 */
 
 #include <stdlib.h>
 
-void show_alloc_mem()
-{
-
-}
 
 int	main()
 {
