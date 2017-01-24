@@ -5,7 +5,7 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Tue Jan 24 14:45:38 2017 arnaud.alies
+## Last update Tue Jan 24 16:26:49 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -22,6 +22,7 @@ LDFLAGS	=	-shared
 SRC	=	./src/
 
 SRCS	=	$(SRC)malloc.c \
+		$(SRC)free.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
