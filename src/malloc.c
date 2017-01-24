@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Jan 24 16:51:15 2017 arnaud.alies
+** Last update Tue Jan 24 16:53:19 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -29,6 +29,10 @@ int		reuse(t_alloc *alloc, size_t size)
       new->next = alloc->next;
       alloc->next = new;
       alloc->size = size;
+      alloc->used = 1;
+    }
+  else
+    {
       alloc->used = 1;
     }
   return (0);
