@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Tue Jan 24 14:47:25 2017 arnaud.alies
+** Last update Tue Jan 24 15:08:17 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -20,6 +20,8 @@ typedef struct s_alloc
 {
   uint32_t magic;
   size_t size;
+  int used;
+  struct s_alloc *next;
 } t_alloc;
 
 void show_alloc_mem();
