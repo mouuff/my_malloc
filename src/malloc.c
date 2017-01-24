@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Jan 24 15:17:10 2017 arnaud.alies
+** Last update Tue Jan 24 16:51:15 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -13,6 +13,26 @@
 
 static t_alloc *start = NULL;
 static t_alloc *prev = NULL;
+
+int		reuse(t_alloc *alloc, size_t size)
+{
+  t_alloc	*new;
+
+  if (alloc->magic != MAGIC || alloc->used == 1)
+    return (1);
+  if (size + MIN_CHUNK + sizeof(t_alloc) < alloc->size)
+    {
+      new = ALLOC_PTR(alloc) + size;
+      new->magic = MAGIC;
+      new->used = 0;
+      new->size = alloc->size - sizeof(t_alloc) - size;
+      new->next = alloc->next;
+      alloc->next = new;
+      alloc->size = size;
+      alloc->used = 1;
+    }
+  return (0);
+}
 
 void		*malloc(size_t size)
 {
@@ -31,5 +51,12 @@ void		*malloc(size_t size)
       prev->next = alloc;
     }
   prev = alloc;
-  return (((void*)alloc) + sizeof(t_alloc));
+  return (ALLOC_PTR(alloc));
+}
+
+void *realloc(void *ptr, size_t size)
+{
+  (void)ptr;
+  (void)size;
+  return (NULL);
 }
