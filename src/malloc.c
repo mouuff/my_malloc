@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Jan 24 16:53:19 2017 arnaud.alies
+** Last update Tue Jan 24 17:01:48 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -63,4 +63,18 @@ void *realloc(void *ptr, size_t size)
   (void)ptr;
   (void)size;
   return (NULL);
+}
+
+//hue
+#include <stdlib.h>
+void		show_alloc_mem()
+{
+  t_alloc	*tmp;
+
+  tmp = start;
+  while (tmp != NULL)
+    {
+      printf("%p size:%d used:%d\n", tmp, tmp->size, tmp->used);
+      tmp = tmp->next;
+    }
 }
