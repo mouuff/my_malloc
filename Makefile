@@ -5,7 +5,7 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Tue Jan 24 13:27:24 2017 arnaud.alies
+## Last update Tue Jan 24 13:29:53 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -30,7 +30,7 @@ RM	=	rm -f
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(CFLAGS)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
 		$(RM) $(OBJS)
