@@ -1,0 +1,4 @@
+Presque fonctionnel
+Peut lancer firefox, ls et autre, mais dés que l'on preload valgrind, il chiale.
+Sa vient d'un split d'un noeud, les liens sont corrects mais surement une petite couille.
+Calloc et norme : fait
