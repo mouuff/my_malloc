@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Wed Jan 25 10:30:24 2017 arnaud.alies
+** Last update Wed Jan 25 12:52:43 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -16,7 +16,7 @@
 
 #define MAGIC (0x2142FF42)
 #define MIN_CHUNK (128)
-#define ALLOC_PTR(alloc) ((void*)(((void*)alloc) + sizeof(t_alloc)))
+//#define ALLOC_PTR(alloc) ((void*)(((void*)alloc) + sizeof(t_alloc)))
 
 typedef struct s_alloc
 {
@@ -28,7 +28,7 @@ typedef struct s_alloc
 
 void my_putchar(char c);
 void my_put_nbr(unsigned long nb);
-void *reuse(size_t size);
+t_alloc *reuse(size_t size);
 
 void show_alloc_mem();
 

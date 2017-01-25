@@ -5,13 +5,13 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Wed Jan 25 11:29:31 2017 arnaud.alies
+** Last update Wed Jan 25 12:55:54 2017 arnaud.alies
 */
 
 #include <unistd.h>
 #include "my_malloc.h"
 
-static int	reuse_alloc(t_alloc *alloc, size_t size)
+static int	shrink_alloc(t_alloc *alloc, size_t size)
 {
   t_alloc       *new;
 
@@ -19,7 +19,7 @@ static int	reuse_alloc(t_alloc *alloc, size_t size)
     return (1);
   if (size + sizeof(t_alloc) < alloc->size)
     {
-      new = alloc + sizeof(t_alloc) + size;
+      new = ((void*)alloc) + sizeof(t_alloc) + size;
       new->magic = MAGIC;
       new->used = 0;
       new->size = alloc->size - sizeof(t_alloc) - size;
@@ -31,18 +31,17 @@ static int	reuse_alloc(t_alloc *alloc, size_t size)
   return (0);
 }
 
-void            *reuse(size_t size)
+t_alloc		*reuse(size_t size)
 {
   t_alloc       *tmp;
 
   tmp = g_start;
   while (tmp != NULL)
     {
-      if (tmp->used == 0 && tmp->size >= size)
+      if (tmp->size >= size)
 	{
-	  reuse_alloc(tmp, size);
-          tmp->used = 1;
-          return (ALLOC_PTR(tmp));
+	  if (shrink_alloc(tmp, size) == 0)
+	    return (tmp);
         }
       tmp = tmp->next;
     }
