@@ -5,47 +5,26 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Jan 24 17:33:22 2017 arnaud.alies
+** Last update Wed Jan 25 11:28:35 2017 arnaud.alies
 */
 
+#include <string.h>
 #include <unistd.h>
 #include "my_malloc.h"
 
-static t_alloc *start = NULL;
+t_alloc *g_start = NULL;
 static t_alloc *prev = NULL;
-
-int		reuse(t_alloc *alloc, size_t size)
-{
-  t_alloc	*new;
-
-  if (alloc->magic != MAGIC || alloc->used == 1)
-    return (1);
-  if (size + MIN_CHUNK + sizeof(t_alloc) < alloc->size)
-    {
-      new = ALLOC_PTR(alloc) + size;
-      new->magic = MAGIC;
-      new->used = 0;
-      new->size = alloc->size - sizeof(t_alloc) - size;
-      new->next = alloc->next;
-      alloc->next = new;
-      alloc->size = size;
-      alloc->used = 1;
-    }
-  else
-    {
-      alloc->used = 1;
-    }
-  return (0);
-}
 
 void		*malloc(size_t size)
 {
   t_alloc	*alloc;
 
+  if ((alloc = reuse(size)) != NULL)
+    return (alloc);
   alloc = sbrk(size + sizeof(t_alloc));
   //TODO : if alloc -1
-  if (start == NULL)
-    start = alloc;
+  if (g_start == NULL)
+    g_start = alloc;
   alloc->magic = MAGIC;
   alloc->size = size;
   alloc->used = 1;
@@ -55,26 +34,5 @@ void		*malloc(size_t size)
       prev->next = alloc;
     }
   prev = alloc;
-  //show_alloc_mem();
   return (ALLOC_PTR(alloc));
-}
-
-void *realloc(void *ptr, size_t size)
-{
-  (void)ptr;
-  (void)size;
-  return (NULL);
-}
-
-void		show_alloc_mem()
-{
-  t_alloc	*tmp;
-
-  tmp = start;
-  while (tmp != NULL)
-    {
-      
-      //printf("%p size:%ld used:%d\n", tmp, tmp->size, tmp->used);
-      tmp = tmp->next;
-    }
 }
