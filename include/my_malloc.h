@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Wed Jan 25 13:01:05 2017 arnaud.alies
+** Last update Wed Jan 25 13:27:40 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <pthread.h>
 
 #define MAGIC (0x2142FF42)
 #define MIN_CHUNK (128)
@@ -38,5 +39,6 @@ void *calloc(size_t nmemb, size_t size);
 void free(void *ptr);
 
 extern t_alloc *g_start;
+extern pthread_mutex_t g_mutex;
 
 #endif

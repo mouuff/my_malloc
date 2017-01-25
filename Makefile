@@ -5,7 +5,7 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Wed Jan 25 13:00:58 2017 arnaud.alies
+## Last update Wed Jan 25 13:25:40 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -17,7 +17,7 @@ INC	=	./include/
 CFLAGS	=	-I$(INC) -fPIC \
 		-Wall -W -Wextra
 
-LDFLAGS	=	-shared
+LDFLAGS	=	-shared -lpthread
 
 SRC	=	./src/
 

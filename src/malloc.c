@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Wed Jan 25 13:04:05 2017 arnaud.alies
+** Last update Wed Jan 25 13:50:03 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -13,16 +13,24 @@
 #include "my_malloc.h"
 
 t_alloc *g_start = NULL;
+pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
 static t_alloc *prev = NULL;
 
 void		*malloc(size_t size)
 {
   t_alloc	*alloc;
 
+  pthread_mutex_lock(&g_mutex);
   if ((alloc = reuse(size)) != NULL)
-    return (((void*)alloc) + sizeof(t_alloc));
+    {
+      pthread_mutex_unlock(&g_mutex);
+      return (((void*)alloc) + sizeof(t_alloc));
+    }
   if ((alloc = sbrk(size + sizeof(t_alloc))) == (void*)-1)
-    return (NULL);
+    {
+      pthread_mutex_unlock(&g_mutex);
+      return (NULL);
+    }
   if (g_start == NULL)
     g_start = alloc;
   alloc->magic = MAGIC;
@@ -34,5 +42,6 @@ void		*malloc(size_t size)
       prev->next = alloc;
     }
   prev = alloc;
+  pthread_mutex_unlock(&g_mutex);
   return (((void*)alloc) + sizeof(t_alloc));
 }

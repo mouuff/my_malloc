@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Wed Jan 25 10:52:59 2017 arnaud.alies
+** Last update Wed Jan 25 14:14:31 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -15,7 +15,6 @@ void		*realloc(void *ptr, size_t size)
 {
   t_alloc	*alloc;
   void		*res;
-  int		min_size;
 
   if (ptr == NULL)
     return (malloc(size));
@@ -24,11 +23,7 @@ void		*realloc(void *ptr, size_t size)
     return (NULL);
   if ((res = malloc(size)) == NULL)
     return (NULL);
-  if (alloc->size > size)
-    min_size = size;
-  else
-    min_size = alloc->size;
-  memcpy(res, ptr, min_size);
+  memcpy(res, ptr, (alloc->size < size ? alloc->size : size));
   free(ptr);
   return (res);
 }
