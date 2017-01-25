@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Wed Jan 25 10:23:36 2017 arnaud.alies
+** Last update Wed Jan 25 10:39:00 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -17,6 +17,8 @@ void		*realloc(void *ptr, size_t size)
   void		*res;
   int		min_size;
 
+  if (ptr == NULL)
+    return (malloc(size));
   alloc = ptr - sizeof(t_alloc);
   if (alloc->magic != MAGIC)
     return (NULL);

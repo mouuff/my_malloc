@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Wed Jan 25 10:03:07 2017 arnaud.alies
+** Last update Wed Jan 25 10:30:24 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -34,6 +34,7 @@ void show_alloc_mem();
 
 void *malloc(size_t size);
 void *realloc(void *ptr, size_t size);
+void *calloc(size_t nmemb, size_t size);
 void free(void *ptr);
 
 extern t_alloc *g_start;
