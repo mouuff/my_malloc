@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Wed Jan 25 02:25:24 2017 Frederic ODDOU
+** Last update Wed Jan 25 12:36:01 2017 Frederic ODDOU
 */
 
 #include <unistd.h>
@@ -22,7 +22,7 @@ static int	reuse(t_alloc *alloc, size_t size)
   new = ALLOC_PTR(alloc) + size;
   new->magic = MAGIC_MALLOC;
   new->used = false;
-  new->size = alloc->size - MARGE_SIZE(size);
+  new->size = alloc->size - sizeof(t_alloc) - size;
   new->next = alloc->next;
   alloc->next = new;
   alloc->size = size;
@@ -58,7 +58,7 @@ static void	*find_memory(t_alloc *ptr, size_t size)
   tmp = start;
   if (MARGE_SIZE(size) > ptr->size)
     {
-      while (tmp != NULL && tmp->used == true && tmp->size < MARGE_SIZE(size))
+      while (tmp != NULL && !(tmp->used == false && tmp->size >= MARGE_SIZE(size)))
 	tmp = tmp->next;
       if (tmp == NULL)
 	{
@@ -72,6 +72,8 @@ static void	*find_memory(t_alloc *ptr, size_t size)
     tmp = ptr;
   new = ALLOC_PTR(tmp);
   memcpy(new, ALLOC_PTR(ptr), ptr->size);
+  if (ptr != tmp)
+    free(ptr);
   reuse(tmp, size);
   return (new);
 }
