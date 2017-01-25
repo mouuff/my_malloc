@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Wed Jan 25 10:39:00 2017 arnaud.alies
+** Last update Wed Jan 25 10:52:59 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -29,5 +29,6 @@ void		*realloc(void *ptr, size_t size)
   else
     min_size = alloc->size;
   memcpy(res, ptr, min_size);
+  free(ptr);
   return (res);
 }

@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Wed Jan 25 10:32:42 2017 arnaud.alies
+** Last update Wed Jan 25 11:29:31 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -17,9 +17,9 @@ static int	reuse_alloc(t_alloc *alloc, size_t size)
 
   if (alloc == NULL || alloc->magic != MAGIC || alloc->used == 1)
     return (1);
-  if (size + MIN_CHUNK + sizeof(t_alloc) < alloc->size)
+  if (size + sizeof(t_alloc) < alloc->size)
     {
-      new = ALLOC_PTR(alloc) + size;
+      new = alloc + sizeof(t_alloc) + size;
       new->magic = MAGIC;
       new->used = 0;
       new->size = alloc->size - sizeof(t_alloc) - size;
@@ -42,7 +42,7 @@ void            *reuse(size_t size)
 	{
 	  reuse_alloc(tmp, size);
           tmp->used = 1;
-          return (tmp);
+          return (ALLOC_PTR(tmp));
         }
       tmp = tmp->next;
     }

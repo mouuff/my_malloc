@@ -5,9 +5,11 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 16:54:55 2017 arnaud.alies
-** Last update Wed Jan 25 10:08:10 2017 arnaud.alies
+** Last update Wed Jan 25 11:27:36 2017 arnaud.alies
 */
 
+#include <assert.h>
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "./include/my_malloc.h"
@@ -48,7 +50,8 @@ void            show_alloc_mem()
 
 int	main()
 {
-  char *truc = malloc(256);
+  char *truc = malloc(30 + sizeof(t_alloc) + 1);
+  memset(truc, 'a', 30 + sizeof(t_alloc) + 1);
   start = (void*)truc - sizeof(t_alloc);
   char *hue = malloc(100);
 
@@ -58,5 +61,14 @@ int	main()
   show_alloc_mem();
   truc = malloc(30);
   show_alloc_mem();
+
+  char *c = malloc(1);
+  /*
+  *c = 'a';
+  t_alloc *test = c - sizeof(t_alloc);
+  assert(test->magic == MAGIC);
+  */
+  show_alloc_mem();
+  write(1, c, 1);
   return (0);
 }
