@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Wed Jan 25 12:55:37 2017 arnaud.alies
+** Last update Wed Jan 25 13:04:05 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -21,8 +21,8 @@ void		*malloc(size_t size)
 
   if ((alloc = reuse(size)) != NULL)
     return (((void*)alloc) + sizeof(t_alloc));
-  alloc = sbrk(size + sizeof(t_alloc));
-  //TODO : if alloc -1
+  if ((alloc = sbrk(size + sizeof(t_alloc))) == (void*)-1)
+    return (NULL);
   if (g_start == NULL)
     g_start = alloc;
   alloc->magic = MAGIC;
