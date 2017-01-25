@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 16:54:55 2017 arnaud.alies
-** Last update Wed Jan 25 09:45:43 2017 arnaud.alies
+** Last update Wed Jan 25 10:08:10 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -39,6 +39,7 @@ void            show_alloc_mem()
   while (tmp != NULL)
     {
       my_put_nbr(tmp->size);
+      
       write(1, &c, 1);
       tmp = tmp->next;
     }
@@ -47,7 +48,7 @@ void            show_alloc_mem()
 
 int	main()
 {
-  char *truc = malloc(50);
+  char *truc = malloc(256);
   start = (void*)truc - sizeof(t_alloc);
   char *hue = malloc(100);
 
@@ -55,7 +56,7 @@ int	main()
   show_alloc_mem();
   free(truc);
   show_alloc_mem();
-  truc = malloc(25);
+  truc = malloc(30);
   show_alloc_mem();
   return (0);
 }
