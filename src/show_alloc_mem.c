@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:54:54 2017 arnaud.alies
-** Last update Wed Jan 25 09:58:48 2017 arnaud.alies
+** Last update Wed Jan 25 13:01:38 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -18,8 +18,7 @@ void            show_alloc_mem()
   tmp = g_start;
   while (tmp != NULL)
     {
-      my_put_nbr(tmp->size);
-
+      my_putnbr(tmp->size);
       my_putchar('\n');
       tmp = tmp->next;
     }

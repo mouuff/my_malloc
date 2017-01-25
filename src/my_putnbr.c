@@ -5,12 +5,12 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:23:48 2017 arnaud.alies
-** Last update Wed Jan 25 09:25:02 2017 arnaud.alies
+** Last update Wed Jan 25 13:00:50 2017 arnaud.alies
 */
 
 #include <unistd.h>
 
-void		my_put_nbr(unsigned long nb)
+void		my_putnbr(unsigned long nb)
 {
   unsigned long	x;
   char		c;

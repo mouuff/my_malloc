@@ -5,14 +5,14 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 16:09:56 2017 arnaud.alies
-** Last update Tue Jan 24 16:26:27 2017 arnaud.alies
+** Last update Wed Jan 25 13:00:07 2017 arnaud.alies
 */
 
 #include "my_malloc.h"
 
-void free(void *ptr)
+void		free(void *ptr)
 {
-  t_alloc *alloc;
+  t_alloc	*alloc;
 
   if (ptr == NULL)
     return ;

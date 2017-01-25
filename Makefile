@@ -5,7 +5,7 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Wed Jan 25 10:23:26 2017 arnaud.alies
+## Last update Wed Jan 25 13:00:58 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -26,7 +26,7 @@ SRCS	=	$(SRC)malloc.c \
 		$(SRC)free.c \
 		$(SRC)show_alloc_mem.c \
 		$(SRC)reuse.c \
-		$(SRC)my_put_nbr.c \
+		$(SRC)my_putnbr.c \
 		$(SRC)my_putchar.c \
 
 OBJS	=	$(SRCS:.c=.o)

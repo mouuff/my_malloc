@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Wed Jan 25 12:52:43 2017 arnaud.alies
+** Last update Wed Jan 25 13:01:05 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -27,7 +27,7 @@ typedef struct s_alloc
 } t_alloc;
 
 void my_putchar(char c);
-void my_put_nbr(unsigned long nb);
+void my_putnbr(unsigned long nb);
 t_alloc *reuse(size_t size);
 
 void show_alloc_mem();
