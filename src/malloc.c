@@ -5,9 +5,10 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Jan 24 17:33:22 2017 arnaud.alies
+** Last update Wed Jan 25 09:39:01 2017 arnaud.alies
 */
 
+#include <string.h>
 #include <unistd.h>
 #include "my_malloc.h"
 
@@ -29,13 +30,27 @@ int		reuse(t_alloc *alloc, size_t size)
       new->next = alloc->next;
       alloc->next = new;
       alloc->size = size;
-      alloc->used = 1;
     }
-  else
-    {
-      alloc->used = 1;
-    }
+  alloc->used = 1;
   return (0);
+}
+
+void		*find_free(size_t size)
+{
+  t_alloc	*tmp;
+
+  tmp = start;
+  while (tmp != NULL)
+    {
+      if (tmp->used == 0 && tmp->size >= size)
+	{
+	  //reuse() here
+	  tmp->used = 1;
+	  return (tmp);
+	}
+      tmp = tmp->next;
+    }
+  return (NULL);
 }
 
 void		*malloc(size_t size)
@@ -55,26 +70,10 @@ void		*malloc(size_t size)
       prev->next = alloc;
     }
   prev = alloc;
-  //show_alloc_mem();
   return (ALLOC_PTR(alloc));
 }
 
 void *realloc(void *ptr, size_t size)
 {
-  (void)ptr;
-  (void)size;
-  return (NULL);
-}
-
-void		show_alloc_mem()
-{
-  t_alloc	*tmp;
-
-  tmp = start;
-  while (tmp != NULL)
-    {
-      
-      //printf("%p size:%ld used:%d\n", tmp, tmp->size, tmp->used);
-      tmp = tmp->next;
-    }
+  
 }
