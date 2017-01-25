@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Wed Jan 25 12:36:01 2017 Frederic ODDOU
+** Last update Wed Jan 25 13:00:22 2017 Frederic ODDOU
 */
 
 #include <unistd.h>
@@ -81,12 +81,17 @@ static void	*find_memory(t_alloc *ptr, size_t size)
 void		*realloc(void *ptr, size_t size)
 {
   t_alloc	*alloc;
+  void *new;
 
   if (ptr == NULL)
     return (malloc(size));
   alloc = ptr - sizeof(t_alloc);
   if (alloc->magic == MAGIC_MALLOC)
-    return (find_memory(alloc, size));
+    {
+      new = find_memory(alloc, size);
+      show_alloc_mem();
+      return (new);
+    }
   return (NULL);
 }
 
@@ -101,6 +106,35 @@ void		*calloc(size_t nmemb, size_t size)
   return (new);
 }
 
+void		free(void *ptr)
+{
+  t_alloc	*alloc;
+  t_alloc *tmp = start;
+
+  if (ptr == NULL)
+    return ;
+  alloc = ptr - sizeof(t_alloc);
+  if (alloc->magic != MAGIC_MALLOC)
+    return ;
+  alloc->used = false;
+  if (alloc->next != NULL && alloc->next->used == false)
+    {
+      if (prev == alloc->next)
+	prev = alloc;
+      alloc->size += alloc->next->size + sizeof(t_alloc);
+    }
+  while (tmp != NULL && tmp->next != alloc)
+    tmp = tmp->next;
+  if (tmp != NULL && tmp->used == false)
+    {
+      tmp->size = tmp->next->size + sizeof(t_alloc);
+      if (prev == tmp->next)
+	prev = tmp;
+      tmp->next = tmp->next->next;
+    }
+}
+
+#include <stdio.h>
 void		show_alloc_mem()
 {
   t_alloc	*tmp;
@@ -108,8 +142,8 @@ void		show_alloc_mem()
   tmp = start;
   while (tmp != NULL)
     {
-
-      //printf("%p size:%ld used:%d\n", tmp, tmp->size, tmp->used);
+      printf("%p - %p :  %li bytes %d\n", tmp, tmp + tmp->size, tmp->size, (tmp->used) ? 1 : 0);
       tmp = tmp->next;
     }
+  printf("\n\n");
 }
