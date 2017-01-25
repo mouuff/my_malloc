@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Wed Jan 25 10:05:31 2017 arnaud.alies
+** Last update Wed Jan 25 10:10:51 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -20,9 +20,7 @@ void		*malloc(size_t size)
   t_alloc	*alloc;
 
   if ((alloc = reuse(size)) != NULL)
-    {
-      return (alloc);
-    }
+    return (alloc);
   alloc = sbrk(size + sizeof(t_alloc));
   //TODO : if alloc -1
   if (g_start == NULL)
