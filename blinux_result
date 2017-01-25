@@ -1,0 +1,25 @@
+(arnaud.alies@pc-arnaud 25)LD_PRELOAD=./libmy_malloc.so ./moul_malloc_stud 
+Legend... :
+:( => NOK
+:| => BOF
+:) => GOOD
+<3 => VERY GOOD
+Ary :)
+By Six && Massou
+
+Test 0 : Testing lil malloc/free and big malloc/free => :|
+Test 1 : Testing very big malloc/free => :|
+Test 2 : Testing very lil malloc/free => <3
+Test 3 : Testing pow(2) malloc's/free's => <3
+Test 4 : Testing pagesize malloc's/free's => :(
+Test 5 : Testing hundred of pow(2) malloc's/free's => <3
+Test 6 : Testing alternate lil/big malloc's => :)
+Test 7 : Testing realloc's => :)
+Test Exec 0 : Testing standard ls test's => :)
+Test Exec 1 : Testing ls -lRa /tmp => :)
+Test Exec 2 : Testing ls -lRa /home => :)
+Test Exec 3 : Testing ls -lRa /dev => :)
+Test Exec 4 : Testing bc => :)
+Launch Threads Test?? Y/N (N)
+Y
+Test Threads 0 : Testing multi-thread's => <3
