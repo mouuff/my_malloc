@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:28:25 2017 arnaud.alies
-** Last update Wed Jan 25 14:12:05 2017 arnaud.alies
+** Last update Thu Jan 26 15:59:33 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -15,9 +15,8 @@ void            *calloc(size_t nmemb, size_t size)
 {
   void          *new;
 
-  if (size * nmemb == 0)
-    return (NULL);
-  if ((new = malloc(size * nmemb)) != NULL)
-    memset(new, 0, size * nmemb);
+  size *= nmemb;
+  if ((new = malloc(size)) != NULL)
+    memset(new, 0, size);
   return (new);
 }
