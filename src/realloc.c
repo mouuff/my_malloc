@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Wed Jan 25 14:14:31 2017 arnaud.alies
+** Last update Thu Jan 26 14:08:38 2017 Arnaud Alies
 */
 
 #include <string.h>
@@ -13,12 +13,12 @@
 
 void		*realloc(void *ptr, size_t size)
 {
-  t_alloc	*alloc;
+  t_chunk	*alloc;
   void		*res;
 
   if (ptr == NULL)
     return (malloc(size));
-  alloc = ptr - sizeof(t_alloc);
+  alloc = ptr - sizeof(t_chunk);
   if (alloc->magic != MAGIC)
     return (NULL);
   if ((res = malloc(size)) == NULL)

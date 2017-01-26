@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:54:54 2017 arnaud.alies
-** Last update Wed Jan 25 13:01:38 2017 arnaud.alies
+** Last update Thu Jan 26 14:08:58 2017 Arnaud Alies
 */
 
 #include <unistd.h>
@@ -13,7 +13,7 @@
 
 void            show_alloc_mem()
 {
-  t_alloc       *tmp;
+  t_chunk       *tmp;
   
   tmp = g_start;
   while (tmp != NULL)
