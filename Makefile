@@ -5,7 +5,7 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Wed Jan 25 13:25:40 2017 arnaud.alies
+## Last update Thu Jan 26 15:34:18 2017 Arnaud Alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -22,6 +22,7 @@ LDFLAGS	=	-shared -lpthread
 SRC	=	./src/
 
 SRCS	=	$(SRC)malloc.c \
+		$(SRC)calloc.c \
 		$(SRC)realloc.c \
 		$(SRC)free.c \
 		$(SRC)show_alloc_mem.c \
