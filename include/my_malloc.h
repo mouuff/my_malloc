@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Thu Jan 26 17:07:18 2017 arnaud.alies
+** Last update Thu Jan 26 17:09:59 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -16,8 +16,7 @@
 # include <pthread.h>
 
 # define MAGIC (0x2142FF42)
-# define MIN_CHUNK (128)
-//#define ALLOC_PTR(alloc) ((void*)(((void*)alloc) + sizeof(t_alloc)))
+//# define MIN_CHUNK (128)
 
 typedef struct		s_chunk
 {
