@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:54:54 2017 arnaud.alies
-** Last update Fri Jan 27 11:31:51 2017 arnaud.alies
+** Last update Fri Jan 27 11:42:28 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -24,6 +24,7 @@ void            show_alloc_mem()
       my_puthex((size_t)(((void*)tmp) + sizeof(t_chunk)));
       my_putstr(" - ");
       my_puthex((size_t)(((void*)tmp) + sizeof(t_chunk) + tmp->size));
+      my_putstr(" : ");
       my_putnbr(tmp->size);
       my_putstr(" bytes\n");
       tmp = tmp->next;
