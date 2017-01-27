@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 16:09:56 2017 arnaud.alies
-** Last update Thu Jan 26 14:08:01 2017 Arnaud Alies
+** Last update Fri Jan 27 11:47:16 2017 arnaud.alies
 */
 
 #include "my_malloc.h"
@@ -31,6 +31,7 @@ void		free(void *ptr)
   pthread_mutex_lock(&g_mutex);
   if (alloc->magic != MAGIC)
     {
+      my_putstr(ERR_MAGIC);
       pthread_mutex_unlock(&g_mutex);
       return ;
     }

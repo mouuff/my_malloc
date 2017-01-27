@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Thu Jan 26 14:08:38 2017 Arnaud Alies
+** Last update Fri Jan 27 11:46:12 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -20,7 +20,10 @@ void		*realloc(void *ptr, size_t size)
     return (malloc(size));
   alloc = ptr - sizeof(t_chunk);
   if (alloc->magic != MAGIC)
-    return (NULL);
+    {
+      my_putstr(ERR_MAGIC);
+      return (NULL);
+    }
   if ((res = malloc(size)) == NULL)
     return (NULL);
   memcpy(res, ptr, (alloc->size < size ? alloc->size : size));
