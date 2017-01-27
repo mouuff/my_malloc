@@ -5,7 +5,7 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Fri Jan 27 11:22:45 2017 arnaud.alies
+## Last update Fri Jan 27 11:26:39 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -28,6 +28,7 @@ SRCS	=	$(SRC)malloc.c \
 		$(SRC)show_alloc_mem.c \
 		$(SRC)reuse.c \
 		$(SRC)my_putnbr.c \
+		$(SRC)my_puthex.c \
 		$(SRC)my_putstr.c \
 		$(SRC)my_putchar.c \
 
