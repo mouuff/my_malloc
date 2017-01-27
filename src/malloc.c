@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Thu Jan 26 17:06:33 2017 arnaud.alies
+** Last update Fri Jan 27 13:03:58 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -20,6 +20,8 @@ void		*malloc(size_t size)
 {
   t_chunk	*alloc;
 
+  if (size == 0)
+    return (NULL);
   pthread_mutex_lock(&g_mutex);
   if ((alloc = alloc_reuse(size)) != NULL)
     {
