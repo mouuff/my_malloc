@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Thu Jan 26 17:09:59 2017 arnaud.alies
+** Last update Fri Jan 27 11:22:36 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -16,6 +16,7 @@
 # include <pthread.h>
 
 # define MAGIC (0x2142FF42)
+# define HEX_TABLE ("0123456789ABCDEF")
 //# define MIN_CHUNK (128)
 
 typedef struct		s_chunk
@@ -27,7 +28,9 @@ typedef struct		s_chunk
 }			t_chunk;
 
 void my_putchar(char c);
+void my_putstr(char const *str);
 void my_putnbr(unsigned long nb);
+void my_puthex(size_t nb);
 t_chunk *alloc_reuse(size_t size);
 
 void show_alloc_mem();

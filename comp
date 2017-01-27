@@ -1,0 +1,1 @@
+cc -L. -lmy_malloc test.c && LD_LIBRARY_PATH=. ./a.out
