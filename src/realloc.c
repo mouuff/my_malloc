@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Wed Feb  1 18:04:08 2017 arnaud.alies
+** Last update Wed Feb  1 18:05:56 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -17,7 +17,7 @@ void		*realloc(void *ptr, size_t size)
   void		*new;
 
   if ((new = malloc(size)) == NULL)
-    return (ptr);
+    return (NULL);
   if (ptr == NULL)
     return (new);
   alloc = ((t_chunk*)ptr) - 1;
