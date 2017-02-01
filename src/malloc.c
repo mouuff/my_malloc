@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Wed Feb  1 17:16:27 2017 arnaud.alies
+** Last update Wed Feb  1 17:32:29 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -45,5 +45,5 @@ void		*malloc(size_t size)
     g_prev->next = alloc;
   g_prev = alloc;
   pthread_mutex_unlock(&g_mutex);
-  return (((void*)alloc) + sizeof(t_chunk));
+  return (alloc + 1);
 }

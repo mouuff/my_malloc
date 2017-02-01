@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Fri Jan 27 11:46:12 2017 arnaud.alies
+** Last update Wed Feb  1 17:32:59 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -18,7 +18,7 @@ void		*realloc(void *ptr, size_t size)
 
   if (ptr == NULL)
     return (malloc(size));
-  alloc = ptr - sizeof(t_chunk);
+  alloc = ((t_chunk*)ptr) - 1;
   if (alloc->magic != MAGIC)
     {
       my_putstr(ERR_MAGIC);
