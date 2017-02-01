@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:54:54 2017 arnaud.alies
-** Last update Fri Jan 27 11:42:28 2017 arnaud.alies
+** Last update Wed Feb  1 17:30:40 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -29,5 +29,5 @@ void            show_alloc_mem()
       my_putstr(" bytes\n");
       tmp = tmp->next;
     }
-  my_putchar('\n');
+  my_putstr("\n");
 }

@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 16:09:56 2017 arnaud.alies
-** Last update Wed Feb  1 17:13:34 2017 arnaud.alies
+** Last update Wed Feb  1 17:27:25 2017 arnaud.alies
 */
 
 #include "my_malloc.h"
@@ -30,7 +30,7 @@ void		free(void *ptr)
   alloc = ptr - sizeof(t_chunk);
   if (alloc->magic != MAGIC)
     {
-      my_putstr(ERR_MAGIC);
+      //my_putstr(ERR_MAGIC);
       return ;
     }
   alloc->used = 0;

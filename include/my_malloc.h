@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Fri Jan 27 11:46:57 2017 arnaud.alies
+** Last update Wed Feb  1 17:30:54 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -18,7 +18,6 @@
 # define MAGIC (0x2142FF42)
 # define ERR_MAGIC ("BROKEN MAGIC ID.\n")
 # define HEX_TABLE ("0123456789ABCDEF")
-//# define MIN_CHUNK (128)
 
 typedef struct		s_chunk
 {
@@ -28,7 +27,6 @@ typedef struct		s_chunk
   struct s_chunk	*next;
 }			t_chunk;
 
-void my_putchar(char c);
 void my_putstr(char const *str);
 void my_putnbr(unsigned long nb);
 void my_puthex(size_t nb);
