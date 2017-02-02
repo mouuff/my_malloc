@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Thu Feb  2 17:08:24 2017 arnaud.alies
+** Last update Thu Feb  2 17:28:30 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -23,13 +23,11 @@ void		*malloc(size_t size)
   if (size == 0)
     return (NULL);
   pthread_mutex_lock(&g_mutex);
-  /*
-  if ((alloc = alloc_reuse(size)) != NULL)
+  if ((alloc = chunk_reuse(size)) != NULL)
     {
       pthread_mutex_unlock(&g_mutex);
-      return (((void*)alloc) + sizeof(t_chunk));
+      return (alloc + 1);
     }
-  */
   if ((alloc = sbrk(size + sizeof(t_chunk))) == (void*)-1)
     {
       pthread_mutex_unlock(&g_mutex);

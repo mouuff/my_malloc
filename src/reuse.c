@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Thu Feb  2 16:54:18 2017 arnaud.alies
+** Last update Thu Feb  2 17:29:28 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -38,9 +38,9 @@ static int	shrink_alloc(t_chunk *alloc, size_t size)
   return (0);
 }
 
-t_chunk		*chunk_reuse(size_t size)
+t_chunk			*chunk_reuse(size_t size)
 {
-  t_chunk       *tmp;
+  register t_chunk	*tmp;
 
   tmp = g_start;
   while (tmp != NULL)
