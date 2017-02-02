@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Thu Feb  2 15:01:30 2017 arnaud.alies
+** Last update Thu Feb  2 15:16:40 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -23,7 +23,7 @@ typedef struct		s_chunk
 {
   uint32_t		magic;
   size_t		size;
-  int			used;
+  uint16_t		used;
   struct s_chunk	*next;
   struct s_chunk	*prev;
 }			t_chunk;
