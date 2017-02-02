@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Wed Feb  1 17:30:54 2017 arnaud.alies
+** Last update Thu Feb  2 16:47:17 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -28,8 +28,6 @@ typedef struct		s_chunk
 }			t_chunk;
 
 void my_putstr(char const *str);
-void my_putnbr(unsigned long nb);
-void my_puthex(size_t nb);
 t_chunk *alloc_reuse(size_t size);
 
 void show_alloc_mem();
