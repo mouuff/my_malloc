@@ -1,11 +1,11 @@
 ##
 ## Makefile for hue in /home/arnaud.alies/rendu/PSU_2016_malloc
-## 
+##
 ## Made by arnaud.alies
 ## Login   <arnaud.alies@epitech.eu>
-## 
+##
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Thu Feb  2 15:00:05 2017 arnaud.alies
+## Last update Thu Feb  2 15:01:38 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -47,4 +47,3 @@ fclean:		clean
 re:		fclean all
 
 .PHONY: all clean fclean re
-

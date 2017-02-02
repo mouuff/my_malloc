@@ -1,11 +1,11 @@
 /*
 ** reuse.c for hhue in /home/arnaud.alies/rendu/PSU_2016_malloc
-** 
+**
 ** Made by arnaud.alies
 ** Login   <arnaud.alies@epitech.eu>
-** 
+**
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Wed Feb  1 18:09:29 2017 arnaud.alies
+** Last update Thu Feb  2 11:05:34 2017 Frederic ODDOU
 */
 
 #include <unistd.h>
@@ -29,8 +29,11 @@ static int	shrink_alloc(t_chunk *alloc, size_t size)
       new->used = 0;
       new->size = alloc->size - sizeof(t_chunk) - size;
       new->next = alloc->next;
+      new->prev = alloc;
       alloc->next = new;
       alloc->size = size;
+      if (g_prev == alloc)
+	g_prev = new;
     }
   alloc->used = 1;
   return (0);
