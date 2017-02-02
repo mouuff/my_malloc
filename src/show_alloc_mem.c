@@ -5,14 +5,14 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:54:54 2017 arnaud.alies
-** Last update Thu Feb  2 16:46:54 2017 arnaud.alies
+** Last update Thu Feb  2 16:52:50 2017 arnaud.alies
 */
 
 #include <string.h>
 #include <unistd.h>
 #include "my_malloc.h"
 
-void            my_putnbr(unsigned long nb)
+static void	my_putnbr(unsigned long nb)
 {
   size_t        x;
   char          c;
@@ -28,7 +28,7 @@ void            my_putnbr(unsigned long nb)
     }
 }
 
-void            my_puthex(size_t nb)
+static void	my_puthex(size_t nb)
 {
   size_t        x;
   size_t        base;
