@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Thu Feb  2 11:34:02 2017 Frederic ODDOU
+** Last update Thu Feb  2 15:05:33 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -16,13 +16,12 @@ t_chunk		*g_start = NULL;
 t_chunk		*g_prev = NULL;
 pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-static void	*new_block(size_t size)
+static t_chunk	*new_block(size_t size)
 {
   t_chunk	*alloc;
 
   if ((alloc = sbrk(size + sizeof(t_chunk))) == (void*)-1)
     {
-      pthread_mutex_unlock(&g_mutex);
       return (NULL);
     }
   if (g_start == NULL)
