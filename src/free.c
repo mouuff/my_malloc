@@ -5,12 +5,12 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 16:09:56 2017 arnaud.alies
-** Last update Thu Feb  2 11:00:30 2017 Frederic ODDOU
+** Last update Wed Feb  1 17:43:42 2017 arnaud.alies
 */
 
 #include "my_malloc.h"
 
-void	free_regroup(t_chunk *alloc)
+static void	free_regroup(t_chunk *alloc)
 {
   if (alloc->next != NULL && alloc->next->used == 0)
     {
@@ -18,13 +18,6 @@ void	free_regroup(t_chunk *alloc)
 	g_prev = alloc;
       alloc->size += alloc->next->size + sizeof(t_chunk);
       alloc->next = alloc->next->next;
-    }
-  if (alloc->prev != NULL && alloc->prev->used == 0)
-    {
-      alloc->prev->next = alloc->next;
-      alloc->prev->size += (sizeof(t_chunk) + alloc->size);
-      if (alloc == g_prev)
-	g_prev = alloc->prev;
     }
 }
 
@@ -43,6 +36,6 @@ void		free(void *ptr)
       return ;
     }
   alloc->used = 0;
-  free_regroup(alloc);
+  //free_regroup(alloc);
   pthread_mutex_unlock(&g_mutex);
 }

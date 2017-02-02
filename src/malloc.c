@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Thu Feb  2 15:19:46 2017 arnaud.alies
+** Last update Thu Feb  2 16:41:01 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -16,12 +16,23 @@ t_chunk		*g_start = NULL;
 t_chunk		*g_prev = NULL;
 pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-static t_chunk	*new_block(size_t size)
+void		*malloc(size_t size)
 {
   t_chunk	*alloc;
 
+  if (size == 0)
+    return (NULL);
+  pthread_mutex_lock(&g_mutex);
+  /*
+  if ((alloc = alloc_reuse(size)) != NULL)
+    {
+      pthread_mutex_unlock(&g_mutex);
+      return (((void*)alloc) + sizeof(t_chunk));
+    }
+  */
   if ((alloc = sbrk(size + sizeof(t_chunk))) == (void*)-1)
     {
+      pthread_mutex_unlock(&g_mutex);
       return (NULL);
     }
   if (g_start == NULL)
@@ -30,30 +41,9 @@ static t_chunk	*new_block(size_t size)
   alloc->size = size;
   alloc->used = 1;
   alloc->next = NULL;
-  alloc->prev = g_prev;
   if (g_prev != NULL)
     g_prev->next = alloc;
   g_prev = alloc;
-  return (alloc);
-}
-
-void		*malloc(size_t size)
-{
-  t_chunk	*alloc;
-
-  if (size == 0)
-    return (NULL);
-  pthread_mutex_lock(&g_mutex);
-  if ((alloc = alloc_reuse(size)) != NULL)
-    {
-      pthread_mutex_unlock(&g_mutex);
-      return (((void*)alloc) + sizeof(t_chunk));
-    }
-  if ((alloc = new_block(size)) == NULL)
-    {
-      pthread_mutex_unlock(&g_mutex);
-      return (NULL);
-    }
   pthread_mutex_unlock(&g_mutex);
   return (alloc + 1);
 }

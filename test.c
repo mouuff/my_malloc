@@ -1,11 +1,11 @@
 /*
 ** test.c for test in /home/arnaud.alies/rendu/PSU_2016_malloc
-**
+** 
 ** Made by arnaud.alies
 ** Login   <arnaud.alies@epitech.eu>
-**
+** 
 ** Started on  Tue Jan 24 16:54:55 2017 arnaud.alies
-** Last update Thu Feb  2 11:09:54 2017 Frederic ODDOU
+** Last update Fri Jan 27 12:00:33 2017 arnaud.alies
 */
 
 #include <assert.h>
@@ -14,12 +14,13 @@
 #include <stdlib.h>
 #include "./include/my_malloc.h"
 
+
 int	main()
 {
   char *truc = malloc(1000);
   char *hue = malloc(300);
   int *array;
-
+  
   free(truc);
 
   array = calloc(sizeof(int), 30);

@@ -1,11 +1,11 @@
 ##
 ## Makefile for hue in /home/arnaud.alies/rendu/PSU_2016_malloc
-##
+## 
 ## Made by arnaud.alies
 ## Login   <arnaud.alies@epitech.eu>
-##
+## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Thu Feb  2 15:01:38 2017 arnaud.alies
+## Last update Wed Feb  1 17:30:14 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
@@ -27,6 +27,8 @@ SRCS	=	$(SRC)malloc.c \
 		$(SRC)free.c \
 		$(SRC)show_alloc_mem.c \
 		$(SRC)reuse.c \
+		$(SRC)my_putnbr.c \
+		$(SRC)my_puthex.c \
 		$(SRC)my_putstr.c \
 
 OBJS	=	$(SRCS:.c=.o)
@@ -47,3 +49,4 @@ fclean:		clean
 re:		fclean all
 
 .PHONY: all clean fclean re
+
