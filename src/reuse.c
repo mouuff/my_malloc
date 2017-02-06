@@ -1,19 +1,19 @@
 /*
 ** reuse.c for hhue in /home/arnaud.alies/rendu/PSU_2016_malloc
-** 
+**
 ** Made by arnaud.alies
 ** Login   <arnaud.alies@epitech.eu>
-** 
+**
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Fri Feb  3 11:32:03 2017 arnaud.alies
+** Last update Mon Feb  6 23:13:15 2017 Fredoddou
 */
 
 #include <unistd.h>
 #include "my_malloc.h"
 
-static int	shrink_alloc(t_chunk *alloc, size_t size)
+static int		shrink_alloc(t_chunk *alloc, size_t size)
 {
-  t_chunk       *new;
+  t_chunk		*new;
 
   if (alloc->magic != MAGIC)
     {
@@ -24,16 +24,16 @@ static int	shrink_alloc(t_chunk *alloc, size_t size)
     return (1);
   if (size + sizeof(t_chunk) < alloc->size)
     {
-      new = (t_chunk*)(((char*)alloc) + sizeof(t_chunk) + size);
+      new = (t_chunk *)((void *)alloc + sizeof(t_chunk) + size);
       new->magic = MAGIC;
       new->used = 0;
       new->size = alloc->size - sizeof(t_chunk) - size;
       new->next = alloc->next;
       alloc->next = new;
-      alloc->size = size;
       if (g_prev == alloc)
 	g_prev = new;
     }
+  alloc->size = size;
   alloc->used = 1;
   return (0);
 }

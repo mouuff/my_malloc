@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 10:28:25 2017 arnaud.alies
-** Last update Wed Feb  1 17:48:50 2017 arnaud.alies
+** Last update Mon Feb  6 22:49:54 2017 Fredoddou
 */
 
 #include <string.h>
