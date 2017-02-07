@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 ** 
 ** Started on  Wed Jan 25 09:54:54 2017 arnaud.alies
-** Last update Thu Feb  2 16:52:50 2017 arnaud.alies
+** Last update Tue Feb  7 16:46:22 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -57,9 +57,9 @@ void            show_alloc_mem()
   tmp = g_start;
   while (tmp != NULL)
     {
-      my_puthex((size_t)(((void*)tmp) + sizeof(t_chunk)));
+      my_puthex((size_t)(((char*)tmp) + sizeof(t_chunk)));
       my_putstr(" - ");
-      my_puthex((size_t)(((void*)tmp) + sizeof(t_chunk) + tmp->size));
+      my_puthex((size_t)(((char*)tmp) + sizeof(t_chunk) + tmp->size));
       my_putstr(" : ");
       my_putnbr(tmp->size);
       my_putstr(" bytes\n");

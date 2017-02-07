@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Tue Feb  7 16:34:56 2017 arnaud.alies
+** Last update Tue Feb  7 16:45:45 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -14,22 +14,21 @@
 
 t_chunk		*g_start = NULL;
 t_chunk		*g_prev = NULL;
-pthread_mutex_t	g_mutex0 = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t	g_mutex1 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void		*malloc(size_t size)
 {
   t_chunk	*ptr;
 
-  pthread_mutex_lock(&g_mutex0);
+  pthread_mutex_lock(&g_mutex);
   if ((ptr = chunk_reuse(size)) != NULL)
     {
-      pthread_mutex_unlock(&g_mutex0);
+      pthread_mutex_unlock(&g_mutex);
       return (ptr + 1);
     }
   if ((ptr = sbrk(size + sizeof(t_chunk))) == (void*)-1)
     {
-      pthread_mutex_unlock(&g_mutex0);
+      pthread_mutex_unlock(&g_mutex);
       return (NULL);
     }
   ptr->size = size;
@@ -41,6 +40,6 @@ void		*malloc(size_t size)
   if (g_prev != NULL)
     g_prev->next = ptr;
   g_prev = ptr;
-  pthread_mutex_unlock(&g_mutex0);
+  pthread_mutex_unlock(&g_mutex);
   return (ptr + 1);
 }

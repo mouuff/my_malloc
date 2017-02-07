@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:19:13 2017 arnaud.alies
-** Last update Mon Feb  6 23:10:36 2017 Frederic ODDOU
+** Last update Tue Feb  7 16:46:51 2017 arnaud.alies
 */
 
 #ifndef MY_MALLOC_H_
@@ -39,7 +39,6 @@ void free(void *ptr);
 
 extern t_chunk *g_start;
 extern t_chunk *g_prev;
-extern pthread_mutex_t g_mutex0;
-extern pthread_mutex_t g_mutex1;
+extern pthread_mutex_t g_mutex;
 
 #endif
