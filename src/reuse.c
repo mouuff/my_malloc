@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Mon Feb  6 23:13:15 2017 Fredoddou
+** Last update Tue Feb  7 16:38:53 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -24,7 +24,7 @@ static int		shrink_alloc(t_chunk *alloc, size_t size)
     return (1);
   if (size + sizeof(t_chunk) < alloc->size)
     {
-      new = (t_chunk *)((void *)alloc + sizeof(t_chunk) + size);
+      new = (t_chunk*)(((char*)alloc) + sizeof(t_chunk) + size);
       new->magic = MAGIC;
       new->used = 0;
       new->size = alloc->size - sizeof(t_chunk) - size;

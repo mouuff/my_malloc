@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Mon Feb  6 23:11:51 2017 Fredoddou
+** Last update Tue Feb  7 16:34:56 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -25,7 +25,7 @@ void		*malloc(size_t size)
   if ((ptr = chunk_reuse(size)) != NULL)
     {
       pthread_mutex_unlock(&g_mutex0);
-      return (((void *)((void *)ptr + sizeof(t_chunk))));
+      return (ptr + 1);
     }
   if ((ptr = sbrk(size + sizeof(t_chunk))) == (void*)-1)
     {
@@ -42,5 +42,5 @@ void		*malloc(size_t size)
     g_prev->next = ptr;
   g_prev = ptr;
   pthread_mutex_unlock(&g_mutex0);
-  return (((void *)((void *)ptr + sizeof(t_chunk))));
+  return (ptr + 1);
 }

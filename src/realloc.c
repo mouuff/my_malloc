@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Wed Jan 25 10:15:58 2017 arnaud.alies
-** Last update Mon Feb  6 22:47:49 2017 Frederic ODDOU
+** Last update Tue Feb  7 16:36:01 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -27,7 +27,7 @@ void		*realloc(void *ptr, size_t size)
       pthread_mutex_unlock(&g_mutex1);
       return (new);
     }
-  alloc = (((t_chunk *)((void *)ptr - sizeof(t_chunk))));
+  alloc = ((t_chunk*)ptr) - 1;
   if (alloc->magic != MAGIC)
     {
       pthread_mutex_unlock(&g_mutex1);
