@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 16:09:56 2017 arnaud.alies
-** Last update Fri Feb 10 13:23:31 2017 arnaud.alies
+** Last update Fri Feb 10 15:11:47 2017 arnaud.alies
 */
 
 #include "my_malloc.h"
@@ -43,7 +43,6 @@ void		free(void *ptr)
   alloc = ((t_chunk*)ptr) - 1;
   if (alloc->magic != MAGIC)
     {
-      my_putstr(ERR_MAGIC);
       pthread_mutex_unlock(&g_mutex);
       return ;
     }

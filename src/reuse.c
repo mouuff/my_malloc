@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Wed Jan 25 09:59:26 2017 arnaud.alies
-** Last update Tue Feb  7 16:38:53 2017 arnaud.alies
+** Last update Fri Feb 10 15:12:27 2017 arnaud.alies
 */
 
 #include <unistd.h>
@@ -17,7 +17,6 @@ static int		shrink_alloc(t_chunk *alloc, size_t size)
 
   if (alloc->magic != MAGIC)
     {
-      my_putstr(ERR_MAGIC);
       return (1);
     }
   if (alloc == NULL || alloc->used == 1)

@@ -5,12 +5,12 @@
 ## Login   <arnaud.alies@epitech.eu>
 ## 
 ## Started on  Tue Jan 24 13:20:41 2017 arnaud.alies
-## Last update Thu Feb  2 16:47:09 2017 arnaud.alies
+## Last update Fri Feb 10 14:37:03 2017 arnaud.alies
 ##
 
 NAME	=	libmy_malloc.so
 
-CC	=	gcc
+CC	=	gcc -O1
 
 INC	=	./include/
 
