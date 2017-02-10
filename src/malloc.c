@@ -5,7 +5,7 @@
 ** Login   <arnaud.alies@epitech.eu>
 **
 ** Started on  Tue Jan 24 13:27:39 2017 arnaud.alies
-** Last update Thu Feb  9 14:50:38 2017 arnaud.alies
+** Last update Fri Feb 10 12:07:38 2017 arnaud.alies
 */
 
 #include <string.h>
@@ -16,13 +16,11 @@ t_chunk		*g_start = NULL;
 t_chunk		*g_prev = NULL;
 pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-void		*malloc(size_t sizelol)
+void		*malloc(size_t size)
 {
   t_chunk	*ptr;
-  intptr_t	size;
 
-  size = sizelol;
-  if (size <= 0)
+  if (((intptr_t)size) <= 0)
     return (NULL);
   pthread_mutex_lock(&g_mutex);
   if ((ptr = chunk_reuse(size)) != NULL)
